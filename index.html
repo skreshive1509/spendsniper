@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpendSniper - Track Every Penny</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+   /* NOTE: image file in this folder is named "spendsniper_bg.jpg" (single underscore).
+     If you change the filename, update the URL below or create a copy with the
+     expected name to avoid the background not loading. */
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+  /* primary background image (matches file in project folder) */
+  background: url('spendsniper_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      /* visual fallback if image fails to load */
+      background-color: #0b0b0b;
+      /* blur support for WebKit */
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #00ffcc;
+    }
+
+    header h1 {
+      font-size: 2.2em;
+      margin: 0;
+      color: #00ffcc;
+    }
+
+    header p {
+      font-size: 1em;
+      margin-top: 5px;
+      color: #cccccc;
+    }
+
+    .container {
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.75);
+      max-width: 1000px;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #00ffcc;
+      border-bottom: 1px solid #00ffcc;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    h3 {
+      color: #00e6b8;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #00bfa5;
+    }
+
+    .warning {
+      margin-top: 20px;
+      font-size: 0.95em;
+      color: #ffcc00;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-left: 4px solid #ffcc00;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-top: 2px solid #00ffcc;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #cccccc;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .download-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 0.9em;
+      }
+
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      h3 {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SpendSniper</h1>
+    <p>Track Every Penny</p>
+  </header>
+
+  <div class="container">
+    <h2>Application Overview</h2>
+    <p><strong>SpendSniper</strong> is a modern and intuitive Android application designed for effortless personal expense tracking. It empowers users to monitor their spending habits through a clean, user-friendly interface, powerful reporting tools, and robust search capabilities.</p>
+
+    <h2>Key Features</h2>
+
+    <h3>1. Core Expense Management</h3>
+    <ul>
+      <li><strong>Add Expenses:</strong> Quickly add new expenses with title, amount, and category. Date auto-set to today.</li>
+      <li><strong>Categorization:</strong> Organize expenses into user-defined categories like "Groceries," "Fast Food," etc.</li>
+      <li><strong>Central Dashboard:</strong> Access all primary functions from one screen.</li>
+    </ul>
+
+    <h3>2. Advanced Monthly Reporting</h3>
+    <ul>
+      <li><strong>Date Filtering:</strong> Select month and year to view history.</li>
+      <li><strong>Pie Chart Visualization:</strong> Dynamic chart with category breakdown and percentages.</li>
+      <li><strong>Side-by-Side Comparison:</strong> FAB toggles to bar chart comparing current and previous month.</li>
+      <li><strong>Itemized Totals:</strong> Scrollable list of exact category totals.</li>
+    </ul>
+
+    <h3>3. Global Search Functionality</h3>
+    <ul>
+      <li><strong>Context-Aware UI:</strong> Search by name, category, or date.</li>
+      <li><strong>Instant Results:</strong> Real-time filtering as you type.</li>
+    </ul>
+
+    <h3>4. Data Export and Portability</h3>
+    <ul>
+      <li><strong>Download Reports:</strong> Export full history with one tap.</li>
+      <li><strong>Multiple Formats:</strong> PDF and CSV (Excel) supported.</li>
+    </ul>
+
+    <h3>5. Polished User Experience (UI/UX)</h3>
+    <ul>
+      <li><strong>Immersive Welcome Screen:</strong> Full-screen splash with slogan.</li>
+      <li><strong>Dynamic Titles:</strong> Each screen shows module and version.</li>
+      <li><strong>Modern Design:</strong> FAB, RecyclerView, clean layout.</li>
+      <li><strong>Responsive Performance:</strong> Powered by Kotlin Coroutines and Flow.</li>
+    </ul>
+
+    <a class="download-btn" href="https://github.com/skreshive1509/spendsniper/releases/tag/v1.0" download>Download SpendSniper APK</a>
+
+    <div class="warning">
+      ⚠️ <strong>Note:</strong> When installing the APK, your device may show a warning like “This app may be harmful.”  
+      Simply tap <strong>“More details”</strong> or <strong>“Advanced”</strong> and choose <strong>“Install anyway”</strong>.  
+      This is due to a temporary technical glitch from our side, and we’re working to resolve it soon.  
+      Thank you for your support and trust. — <em>Kreshive Srivastava</em>
+    </div>
+  </div>
+
+  <footer>
+    <p>Developed by <strong>Kreshive Srivastava</strong></p>
+  </footer>
+
+</body>
+
+<!-- Diagnostic script: attempts to load the background image and reports success/failure -->
+<script>
+  (function(){
+    const imgName = 'spendsniper_bg.jpg';
+    const img = new Image();
+    img.src = imgName + (location.protocol === 'file:' ? '' : '?' + Date.now());
+    img.onload = function(){
+      console.log('Background image loaded:', imgName);
+    };
+    img.onerror = function(){
+      console.error('Failed to load background image:', imgName);
+      const banner = document.createElement('div');
+      banner.textContent = 'Background image failed to load: ' + imgName + ' — check filename/path and DevTools Network tab.';
+      Object.assign(banner.style, {
+        position: 'fixed',
+        left: '0',
+        right: '0',
+        top: '0',
+        background: 'rgba(200,40,40,0.95)',
+        color: '#fff',
+        padding: '8px 12px',
+        fontFamily: 'sans-serif',
+        zIndex: 9999,
+        textAlign: 'center'
+      });
+      document.documentElement.appendChild(banner);
+    };
+  })();
+</script>
+</html>
