@@ -1,242 +1,127 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpendSniper - Track Every Penny</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendSniper - Smart Expense Tracking App</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-   /* NOTE: image file in this folder is named "spendsniper_bg.jpg" (single underscore).
-     If you change the filename, update the URL below or create a copy with the
-     expected name to avoid the background not loading. */
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      color: #ffffff;
-  /* primary background image (matches file in project folder) */
-  background: url('spendsniper_bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      /* visual fallback if image fails to load */
-      background-color: #0b0b0b;
-      /* blur support for WebKit */
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-    }
-
-    header {
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #00ffcc;
-    }
-
-    header h1 {
-      font-size: 2.2em;
-      margin: 0;
-      color: #00ffcc;
-    }
-
-    header p {
-      font-size: 1em;
-      margin-top: 5px;
-      color: #cccccc;
-    }
-
-    .container {
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.75);
-      max-width: 1000px;
-      margin: auto;
-      border-radius: 10px;
-    }
-
-    h2 {
-      color: #00ffcc;
-      border-bottom: 1px solid #00ffcc;
-      padding-bottom: 5px;
-      margin-top: 30px;
-    }
-
-    h3 {
-      color: #00e6b8;
-      margin-top: 20px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-
-    .download-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background-color: #00ffcc;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    .download-btn:hover {
-      background-color: #00bfa5;
-    }
-
-    .warning {
-      margin-top: 20px;
-      font-size: 0.95em;
-      color: #ffcc00;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-left: 4px solid #ffcc00;
-      border-radius: 6px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.85);
-      border-top: 2px solid #00ffcc;
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #cccccc;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-
-      .container {
-        padding: 20px;
-      }
-
-      .download-btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        font-size: 0.9em;
-      }
-
-      header h1 {
-        font-size: 1.5em;
-      }
-
-      h2 {
-        font-size: 1.2em;
-      }
-
-      h3 {
-        font-size: 1em;
-      }
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Orbitron, sans-serif; color: #fff; background: url(spendsniper_bg.jpg) no-repeat center center fixed; background-size: cover; background-color: #0b0b0b; }
+    header { background: rgba(0,0,0,0.85); padding: 20px; text-align: center; border-bottom: 2px solid #0fc; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .title-section { flex: 1; min-width: 300px; }
+    header h1 { font-size: 2.2em; margin: 0; color: #0fc; }
+    header p { font-size: 1em; margin-top: 5px; color: #ccc; }
+    .lang-btn { padding: 8px 14px; background: rgba(0,255,204,0.2); color: #0fc; border: 1px solid #0fc; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+    .lang-btn.active { background: #0fc; color: #000; }
+    .lang-btn:hover { background: rgba(0,255,204,0.4); }
+    .container { padding: 30px; background: rgba(0,0,0,0.75); max-width: 1200px; margin: 20px auto; border-radius: 10px; }
+    h2 { color: #0fc; border-bottom: 1px solid #0fc; padding-bottom: 5px; margin-top: 30px; }
+    h3 { color: #0e6b8; margin-top: 20px; }
+    p { line-height: 1.6; color: #e0e0e0; }
+    ul { list-style: none; padding: 0; }
+    ul li { margin: 10px 0; padding-left: 20px; position: relative; }
+    ul li:before { content: ""; position: absolute; left: 0; color: #0fc; }
+    .btn { display: inline-block; margin: 20px 15px 20px 0; padding: 15px 30px; background: #0fc; color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; font-family: Orbitron; transition: 0.3s; }
+    .btn:hover { background: #0bfa5; }
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+    .tech-box { background: rgba(0,255,204,0.1); padding: 15px; border-left: 3px solid #0fc; border-radius: 5px; }
+    .warn { margin: 20px 0; color: #fc0; background: rgba(0,0,0,0.6); padding: 10px; border-left: 4px solid #fc0; border-radius: 6px; }
+    footer { text-align: center; padding: 20px; background: rgba(0,0,0,0.85); border-top: 2px solid #0fc; margin-top: 40px; color: #ccc; }
+    @media (max-width: 768px) { header { flex-direction: column; } .tech-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>SpendSniper</h1>
-    <p>Track Every Penny</p>
+    <div class="title-section">
+      <h1 data-t="title">SpendSniper</h1>
+      <p data-t="sub">Modern Android Expense Tracking</p>
+    </div>
+    <div style="display:flex;gap:10px;margin-right:20px;">
+      <button class="lang-btn active" onclick="setLang('"'"'en'"'"')" id="be">English</button>
+      <button class="lang-btn" onclick="setLang('"'"'es'"'"')" id="bs">Español</button>
+      <button class="lang-btn" onclick="setLang('"'"'hi'"'"')" id="bh">हद</button>
+    </div>
   </header>
 
   <div class="container">
-    <h2>Application Overview</h2>
-    <p><strong>SpendSniper</strong> is a modern and intuitive Android application designed for effortless personal expense tracking. It empowers users to monitor their spending habits through a clean, user-friendly interface, powerful reporting tools, and robust search capabilities.</p>
+    <h2 data-t="h_purpose">Release Overview</h2>
+    <p data-t="p_purpose">SpendSniper v2.0 is a polished Android expense tracking app that makes personal finance management effortless. Add expenses with title, amount, category, and auto-filled date; organize spending into custom categories; and access intelligent dashboards, reports, export tools, and cloud sync.</p>
 
-    <h2>Key Features</h2>
+    <h2 data-t="h_tech">Technology Stack</h2>
+    <p data-t="p_tech">Built with modern, robust technology for a fast, secure, and intuitive user experience.</p>
+    <div class="tech-grid">
+      <div class="tech-box"><strong>Kotlin + Java</strong> - Official Android dev languages</div>
+      <div class="tech-box"><strong>MVVM Architecture</strong> - ViewModel & LiveData</div>
+      <div class="tech-box"><strong>Firebase</strong> - Auth, Firestore, Storage</div>
+      <div class="tech-box"><strong>Material Design</strong> - Modern UI components</div>
+      <div class="tech-box"><strong>MPAndroidChart</strong> - Dynamic visualizations</div>
+      <div class="tech-box"><strong>PDF & CSV Export</strong> - Data portability</div>
+    </div>
 
-    <h3>1. Core Expense Management</h3>
+    <h2 data-t="h_status">Current Status</h2>
+    <p data-t="p_status">SpendSniper v2.0 is now publicly released with Firebase authentication, real-time cloud sync, PDF/CSV export, detailed reports, search, and a polished Material UI.</p>
+
+    <h2>What’s Included in v2.0</h2>
     <ul>
-      <li><strong>Add Expenses:</strong> Quickly add new expenses with title, amount, and category. Date auto-set to today.</li>
-      <li><strong>Categorization:</strong> Organize expenses into user-defined categories like "Groceries," "Fast Food," etc.</li>
-      <li><strong>Central Dashboard:</strong> Access all primary functions from one screen.</li>
+      <li>Secure Firebase Authentication with email registration and login.</li>
+      <li>Integrated password recovery with email reset flow.</li>
+      <li>Real-time cloud synchronization for expenses and user profiles.</li>
+      <li>Advanced monthly reporting with pie chart category breakdown and bar chart comparison.</li>
+      <li>Global search by title, category, and date with instant results.</li>
+      <li>Export full expense history as PDF and CSV for printing or analysis.</li>
+      <li>Improved Android UI with splash screen, FAB, RecyclerView, and Material design polish.</li>
+      <li>Versioned release info, better performance, and stable Kotlin/Flow architecture.</li>
     </ul>
 
-    <h3>2. Advanced Monthly Reporting</h3>
+    <h2>v1.0 vs v2.0 Comparison</h2>
+    <div class="tech-grid">
+      <div class="tech-box"><strong>SpendSniper v1.0</strong>
+        <ul>
+          <li>Local expense management only</li>
+          <li>Basic category organization</li>
+          <li>Simple dashboard overview</li>
+          <li>No cloud backup or sync</li>
+          <li>No export or recovery options</li>
+        </ul>
+      </div>
+      <div class="tech-box"><strong>SpendSniper v2.0</strong>
+        <ul>
+          <li>Secure Firebase login and user profiles</li>
+          <li>Real-time cloud sync across devices</li>
+          <li>PDF and CSV export for sharing and analysis</li>
+          <li>Advanced monthly reports and charts</li>
+          <li>Global search and password recovery</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 data-t="h_roadmap">Future Roadmap</h2>
     <ul>
-      <li><strong>Date Filtering:</strong> Select month and year to view history.</li>
-      <li><strong>Pie Chart Visualization:</strong> Dynamic chart with category breakdown and percentages.</li>
-      <li><strong>Side-by-Side Comparison:</strong> FAB toggles to bar chart comparing current and previous month.</li>
-      <li><strong>Itemized Totals:</strong> Scrollable list of exact category totals.</li>
+      <li><strong data-t="r1">Enhanced Cloud Sync</strong> - Multi-device experience</li>
+      <li><strong data-t="r2">Biometric Security</strong> - Fingerprint login</li>
+      <li><strong data-t="r3">Advanced Customization</strong> - Themes & layouts</li>
+      <li><strong data-t="r4">OCR Bill Scanning</strong> - Auto-extract expenses</li>
+      <li><strong data-t="r5">Budgeting Tools</strong> - Set limits & track</li>
     </ul>
 
-    <h3>3. Global Search Functionality</h3>
-    <ul>
-      <li><strong>Context-Aware UI:</strong> Search by name, category, or date.</li>
-      <li><strong>Instant Results:</strong> Real-time filtering as you type.</li>
-    </ul>
+    <h2 data-t="h_download">Download Now</h2>
+    <a class="btn download-btn" href="https://github.com/skreshive1509/spendsniper/releases" target="_blank" rel="noopener noreferrer" data-t="btn"> Download SpendSniper APK</a>
 
-    <h3>4. Data Export and Portability</h3>
-    <ul>
-      <li><strong>Download Reports:</strong> Export full history with one tap.</li>
-      <li><strong>Multiple Formats:</strong> PDF and CSV (Excel) supported.</li>
-    </ul>
-
-    <h3>5. Polished User Experience (UI/UX)</h3>
-    <ul>
-      <li><strong>Immersive Welcome Screen:</strong> Full-screen splash with slogan.</li>
-      <li><strong>Dynamic Titles:</strong> Each screen shows module and version.</li>
-      <li><strong>Modern Design:</strong> FAB, RecyclerView, clean layout.</li>
-      <li><strong>Responsive Performance:</strong> Powered by Kotlin Coroutines and Flow.</li>
-    </ul>
-
-    <a class="download-btn" href="https://github.com/skreshive1509/spendsniper/releases/tag/v1.0" download>Download SpendSniper APK</a>
-
-    <div class="warning">
-      ⚠️ <strong>Note:</strong> When installing the APK, your device may show a warning like “This app may be harmful.”  
-      Simply tap <strong>“More details”</strong> or <strong>“Advanced”</strong> and choose <strong>“Install anyway”</strong>.  
-      This is due to a temporary technical glitch from our side, and we’re working to resolve it soon.  
-      Thank you for your support and trust. — <em>Kreshive Srivastava</em>
+    <div class="warn">
+       <strong data-t="w_title">Note:</strong> <span data-t="w_text">When installing the APK, your device may warn "This app may be harmful." Tap "More details" or "Advanced" and choose "Install anyway." This is a temporary technical issue and not a security risk.</span>
     </div>
   </div>
 
-  <footer>
-    <p>Developed by <strong>Kreshive Srivastava</strong></p>
-  </footer>
+  <footer><p data-t="footer">Developed by Kreshive Srivastava</p></footer>
 
-</body>
-
-<!-- Diagnostic script: attempts to load the background image and reports success/failure -->
 <script>
-  (function(){
-    const imgName = 'spendsniper_bg.jpg';
-    const img = new Image();
-    img.src = imgName + (location.protocol === 'file:' ? '' : '?' + Date.now());
-    img.onload = function(){
-      console.log('Background image loaded:', imgName);
-    };
-    img.onerror = function(){
-      console.error('Failed to load background image:', imgName);
-      const banner = document.createElement('div');
-      banner.textContent = 'Background image failed to load: ' + imgName + ' — check filename/path and DevTools Network tab.';
-      Object.assign(banner.style, {
-        position: 'fixed',
-        left: '0',
-        right: '0',
-        top: '0',
-        background: 'rgba(200,40,40,0.95)',
-        color: '#fff',
-        padding: '8px 12px',
-        fontFamily: 'sans-serif',
-        zIndex: 9999,
-        textAlign: 'center'
-      });
-      document.documentElement.appendChild(banner);
-    };
-  })();
+const t={en:{title:"SpendSniper",sub:"Modern Android Expense Tracking",h_purpose:"Release Overview",p_purpose:"SpendSniper v2.0 is a polished Android expense tracking app that makes personal finance management effortless. Add expenses with title, amount, category, and auto-filled date; organize spending into custom categories; and access intelligent dashboards, reports, export tools, and cloud sync.",h_tech:"Technology Stack & Key Features",p_tech:"Built with modern, robust technology for a fast, secure, and intuitive user experience.",h_status:"Current Status",p_status:"SpendSniper v2.0 is now publicly released with Firebase authentication, real-time cloud sync, PDF/CSV export, detailed reports, search, and a polished Material UI.",h_roadmap:"Future Prospects & Roadmap",r1:"Enhanced Cloud Sync",r2:"Biometric Security",r3:"Advanced UI Customization",r4:"Bill Upload & OCR",r5:"Budgeting & Goals",h_download:"Download SpendSniper",btn:" Download APK",w_title:"Note",w_text:"When installing the APK, your device may warn 'This app may be harmful.' Tap 'More details' or 'Advanced' and choose 'Install anyway.' This is a temporary technical issue and not a security risk.",footer:"Developed by Kreshive Srivastava"},es:{title:"SpendSniper",sub:"Aplicación inteligente de seguimiento de gastos",h_purpose:"Propósito",p_purpose:"SpendSniper es una aplicación móvil poderosa diseñada para empoderar a los usuarios a tomar control de sus finanzas.",h_tech:"Pila de Tecnología",p_tech:"Construida con tecnología moderna y robusta.",h_status:"Estado Actual",p_status:"Bajo desarrollo activo con características principales implementadas.",h_roadmap:"Hoja de Ruta Futura",r1:"Sincronización en la nube",r2:"Seguridad biométrica",r3:"Personalización avanzada",r4:"Escaneo de facturas",r5:"Herramientas de presupuesto",h_download:"Descargar SpendSniper",btn:" Descargar APK",w_title:"Nota",w_text:"Tu dispositivo puede mostrar un aviso. Tap 'Más detalles' y elige 'Instalar de todos modos'.",footer:"Desarrollado por Kreshive Srivastava"},hi:{title:"SpendSniper",sub:"समरट वयय टरकग ऐप",h_purpose:"उददशय",p_purpose:"SpendSniper एक शकतशल मबइल एपलकशन ह ज उपयगकरतओ क अपन वतत पर नयतरण लन म सकषम बनत ह",h_tech:"परदयगक सटक",p_tech:"आधनक और मजबत परदयगक क सथ नरमत",h_status:"वरतमन सथत",p_status:"सकरय वकस क तहत मखय वशषतए करयनवत ह",h_roadmap:"भवषय क यजन",r1:"कलउड सक म सधर",r2:"बयमटरक सरकष",r3:"उननत अनकलन",r4:"बल सकनग",r5:"बजटग उपकरण",h_download:"SpendSniper डउनलड कर",btn:" APK डउनलड कर",w_title:"नट",w_text:"आपक डवइस क चतवन मल सकत ह 'More details' पर टप कर और 'Install anyway' चन",footer:"Kreshive Srivastava दवर वकसत"}};
+let lang="en";
+function setLang(l){lang=l;document.querySelectorAll("[data-t]").forEach(e=>{e.textContent=t[l][e.getAttribute("data-t")]||e.textContent});document.querySelectorAll(".lang-btn").forEach(e=>e.classList.remove("active"));document.getElementById("b"+l[0]).classList.add("active");localStorage.setItem("lang",l);}
+function downloadAPK(){const a=document.createElement("a");a.href="spendsniper.apk";a.download="spendsniper.apk";document.body.appendChild(a);a.click();document.body.removeChild(a);}
+window.addEventListener("DOMContentLoaded",()=>{const l=localStorage.getItem("lang")||"en";setLang(l);});
+(function(){const i=new Image();i.src="spendsniper_bg.jpg";i.onerror=()=>{const b=document.createElement("div");b.textContent=" Background image not found: spendsniper_bg.jpg";Object.assign(b.style,{position:"fixed",left:"0",right:"0",top:"0",background:"rgba(200,40,40,0.95)",color:"#fff",padding:"8px",fontFamily:"sans-serif",zIndex:"9999",textAlign:"center"});document.documentElement.appendChild(b);}})();
 </script>
+</body>
 </html>
